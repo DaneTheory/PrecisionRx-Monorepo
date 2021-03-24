@@ -1,0 +1,8 @@
+{
+  "name": "@precisionrx/bar",
+  "version": "1.0.0",
+  "main": "index.js",
+  "peerDependencies": {
+    "react": "^17.0.0"
+  }
+}

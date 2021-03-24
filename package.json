@@ -1,0 +1,37 @@
+{
+  "name": "@precisionrx/monorepo",
+  "private": true,
+  "workspaces": [
+    "workspaces/*",
+    "workspaces/DesignSystem/*",
+    "workspaces/Apps/*"
+  ],
+  "scripts": {
+    "design-system": "ultra -r --filter '@precisionrx/styleguide' dev",
+    "ds-dev": "yarn ds-dev:storybook && yarn ds-dev:styleguide",
+    "ds": "concurrently \"yarn ds-dev:storybook\" \"yarn ds-dev:styleguide\"",
+    "ds-dev:styleguide": "ultra --raw -r --filter '@precisionrx/styleguide' dev",
+    "start:styleguide": "ultra -r --filter '@precisionrx/styleguide' start",
+    "ds-dev:storybook": "ultra --raw -r --filter '@precisionrx/components' storybook",
+    "build:styleguide": "ultra -r --filter '@precisionrx/styleguide' build",
+    "build:storybook": "ultra -r --filter '@precisionrx/components' build-storybook",
+    "info": "ultra --info",
+    "monit": "ultra --monitor",
+    "list": "ultra --list",
+    "build:all": "ultra -r --build",
+    "tasks": "ntl -m -s Infinity -O -a -D -e tasks"
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.0",
+    "ntl": "^5.1.0",
+    "ultra-runner": "^3.10.5"
+  },
+  "ntl": {
+    "runner": "yarn"
+  },
+  "ultra": {
+    "concurrent": [
+      "ds-dev"
+    ]
+  }
+}
